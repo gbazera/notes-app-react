@@ -1,25 +1,41 @@
-import logo from './logo.svg';
-import './App.css';
+import { useState } from 'react';
+import Main from './components/Main'
 
 function App() {
-  return (
-    <div className="App">
-      <header className="App-header">
-        <img src={logo} className="App-logo" alt="logo" />
-        <p>
-          Edit <code>src/App.js</code> and save to reload.
-        </p>
-        <a
-          className="App-link"
-          href="https://reactjs.org"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          Learn React
-        </a>
-      </header>
-    </div>
-  );
+	const [noteList, setNoteList] = useState([
+		{
+			id: 0,
+			title: 'note title 1',
+			content: 'note content man bruh idk',
+			pinned: false
+		},
+		{
+			id: 1,
+			title: 'note title 2',
+			content: 'note content man bruh idk',
+			pinned: true
+		},
+		{
+			id: 2,
+			title: 'note title 3',
+			content: 'note content man bruh idk',
+			pinned: false
+		},
+	])
+
+	const pinNote=(id)=>{
+		const newNoteList = noteList;
+		newNoteList.map((note)=>{
+			(note.id == id) ? note.pinned = !note.pinned : null
+		})
+		setNoteList(newNoteList)
+	}
+
+	return (
+		<div className="App">
+			<Main noteList={noteList} pinNote={pinNote}/>
+		</div>
+	);
 }
 
 export default App;
