@@ -26,7 +26,9 @@ function App() {
 	const pinNote=(id)=>{
 		const newNoteList = noteList;
 		newNoteList.map((note)=>{
-			(note.id == id) ? note.pinned = !note.pinned : null
+			if(note.id == id){
+				note.pinned = !note.pinned
+			}
 		})
 		setNoteList(newNoteList)
 	}
