@@ -10,7 +10,7 @@ function Main(props) {
 								{note.id}. {note.title}
 							</h3>
 							<p>{note.content}</p>
-                            <button onClick={()=> props.pinNOte(note.id)}>PIN</button>
+                            <button onClick={()=> props.pinNote(note.id)}>PIN</button>
 						</div>
 					) : null
 				)}
@@ -24,7 +24,7 @@ function Main(props) {
 								{note.id}. {note.title}
 							</h3>
 							<p>{note.content}</p>
-                            <button onClick={()=> props.pinNOte(note.id)}>PIN</button>
+                            <button onClick={()=> props.pinNote(note.id)}>PIN</button>
 						</div>
 					) : null
 				)}
