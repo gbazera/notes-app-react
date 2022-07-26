@@ -3,24 +3,30 @@ function Main(props) {
 		<main>
 			<div className="container">
 				<div className="top">
-					<p className="heading">Pinned</p>
+					<p className="heading">PINNED</p>
 				</div>
 				<div className="notes">
 					{props.noteList.map((note) =>
 						note != null && note.pinned ? (
 							<div className="note" key={note.id}>
-								<p className="title">
-									{note.id}. {note.title}
-								</p>
-								<p>{note.content}</p>
-								<button onClick={() => props.pinNote(note.id)}>
-									UNPIN
-								</button>
-								<button
-									onClick={() => props.deleteNote(note.id)}
-								>
-									DELETE
-								</button>
+								<div className="top">
+									<p className="title">{note.title}</p>
+									<button
+										onClick={() => props.pinNote(note.id)}
+									>
+										<i className="bx bxs-pin"></i>
+									</button>
+								</div>
+								<p className="content">{note.content}</p>
+								<div className="bot">
+									<button
+										onClick={() =>
+											props.deleteNote(note.id)
+										}
+									>
+										<i className="bx bx-trash"></i>
+									</button>
+								</div>
 							</div>
 						) : null
 					)}
@@ -28,24 +34,30 @@ function Main(props) {
 			</div>
 			<div className="container">
 				<div className="top">
-					<p className="heading">Your notes</p>
+					<p className="heading">YOUR NOTES</p>
 				</div>
 				<div className="notes">
 					{props.noteList.map((note) =>
 						note != null && !note.pinned ? (
 							<div className="note" key={note.id}>
-								<p className="title">
-									{note.id}. {note.title}
-								</p>
-								<p>{note.content}</p>
-								<button onClick={() => props.pinNote(note.id)}>
-									PIN
-								</button>
-								<button
-									onClick={() => props.deleteNote(note.id)}
-								>
-									DELETE
-								</button>
+								<div className="top">
+									<p className="title">{note.title}</p>
+									<button
+										onClick={() => props.pinNote(note.id)}
+									>
+										<i className="bx bx-pin"></i>
+									</button>
+								</div>
+								<p className="content">{note.content}</p>
+								<div className="bot">
+									<button
+										onClick={() =>
+											props.deleteNote(note.id)
+										}
+									>
+										<i className="bx bx-trash"></i>
+									</button>
+								</div>
 							</div>
 						) : null
 					)}

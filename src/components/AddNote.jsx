@@ -1,12 +1,16 @@
 function AddNote() {
+	const revealRest=()=>{
+		const addNote = document.querySelector('.add-note')
+		addNote.classList.add('active')
+	}
+
 	return (
 		<div className="container add-note">
-			<div className="top">
-				<p className="heading">Add new note</p>
-			</div>
-			<input type="text" placeholder="Type note title" />
-			<textarea cols="30" rows="10" placeholder="Type note"></textarea>
-			<button type="submit">ADD</button>
+			<form>
+				<input onFocus={revealRest} type="text" placeholder="New note title.." />
+				<textarea rows="5" placeholder="Take a note.."></textarea>
+				<button className="btn" type="submit">ADD</button>
+			</form>
 		</div>
 	);
 }

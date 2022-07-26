@@ -22,6 +22,12 @@ function App() {
 			content: 'note content man bruh idk',
 			pinned: false
 		},
+		{
+			id: 3,
+			title: 'note title 4',
+			content: 'note content man bruh idk',
+			pinned: false
+		},
 	])
 
 	const pinNote=(id)=>{
