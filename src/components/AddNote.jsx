@@ -28,7 +28,7 @@ function AddNote(props) {
 		forceHideRest()
 	}
 
-	const addNote = (e) => {
+	const handleSubmit = (e) => {
 		e.preventDefault()
 
 		if (
@@ -45,7 +45,7 @@ function AddNote(props) {
 
 	return (
 		<div className="container add-note">
-			<form onSubmit={(e)=>addNote(e)}>
+			<form onSubmit={(e)=>handleSubmit(e)}>
 				<input
 					value={inputText}
 					onChange={(e) => {

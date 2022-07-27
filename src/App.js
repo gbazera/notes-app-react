@@ -2,6 +2,7 @@ import { useState } from 'react';
 import Header from './components/Header';
 import Main from './components/Main'
 import AddNote from './components/AddNote';
+import ViewNote from './components/ViewNote';
 
 function App() {
 	const [noteList, setNoteList] = useState([
@@ -39,14 +40,11 @@ function App() {
 		setNoteList([...newNoteList])
 	}
 
-	const editNote=(id)=>{
+	const editNote=(id, title, content)=>{
 		const newNoteList = noteList
 		newNoteList.forEach(note => {
 			if(note != null && note.id === id){
-				const newContent = prompt('Enter new content:')
-				if(newContent !== ''){
-					note.content = newContent
-				}
+				//code goes here
 			}
 		});
 		setNoteList([...newNoteList])
@@ -72,7 +70,8 @@ function App() {
 		<div className="App">
 			<Header />
 			<AddNote addNote={addNote} />
-			<Main noteList={noteList} pinNote={pinNote} deleteNote={deleteNote} editNote={editNote} />
+			<Main noteList={noteList} pinNote={pinNote} deleteNote={deleteNote} />
+			<ViewNote editNote={editNote} />
 		</div>
 	);
 }
