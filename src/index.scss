@@ -42,34 +42,58 @@ body {
 	border-radius: 10px;
 }
 
+nav{
+	background-color: rgba($light, 0.7);
+	height: 100px;
+	display: flex;
+	align-items: center;
+
+	div{
+		width: 1000px;
+		margin: 0 auto;
+	}
+
+	.logo{
+		text-decoration: none;
+		color: $dark1;
+		font-weight: bold;
+		font-size: 20px;
+
+		span{
+			color: $primary;
+		}
+	}
+}
+
 .add-note {
 	form {
 		display: flex;
 		flex-direction: column;
+	}
 
-		textarea,
-		button {
-			display: none;
-		}
+	textarea,
+	button {
+		display: none;
+	}
 
-        input, textarea{
-            background-color: rgba($dark1, .1);
-            border: none;
-            padding: 20px;
-            border-radius: 10px;
-            font-size: 14px;
-            color: $dark1;
-            outline: 4px transparent solid;
-            transition: outline-color .3s;
-        }
+	input, textarea{
+		background-color: rgba($dark1, .1);
+		border: none;
+		padding: 20px;
+		border-radius: 10px;
+		font-size: 14px;
+		color: $dark1;
+		outline: 4px transparent solid;
+		transition: outline-color .3s;
+	}
 
-        textarea{
-            margin: 20px 0;
-        }
+	textarea{
+		margin: 20px 0;
+		resize: vertical;
+	}
 
-        input:focus, textarea:focus{
-            outline-color: rgba($primary, .5);
-        }
+	input:focus, textarea:focus{
+		outline-color: rgba($primary, .5);
 	}
 }
 
@@ -81,20 +105,22 @@ body {
 
 .notes {
 	display: flex;
-    justify-content: space-between;
+	flex-wrap: wrap;
+	gap: 10px;
 	margin-top: 20px;
 }
 
 .note {
 	padding: 20px;
-	width: 220px;
-	height: 180px;
+	width: 232px;
+	height: 200px;
 	background-color: rgba($light, 0.4);
 	box-shadow: 0 4px 8px rgba($dark1, 0.1);
 	border-radius: 10px;
     display: flex;
     flex-direction: column;
     justify-content: space-between;
+	cursor: pointer;
     transition: background-color .3s;
 
 	.title {
@@ -130,10 +156,6 @@ body {
 
 .note:hover {
 	background-color: rgba($light, 0.6);
-}
-
-.note:not(:first-of-type) {
-	margin-left: 10px;
 }
 
 .heading {

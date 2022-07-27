@@ -1,4 +1,5 @@
 import { useState } from 'react';
+import Header from './components/Header';
 import Main from './components/Main'
 import AddNote from './components/AddNote';
 
@@ -15,19 +16,7 @@ function App() {
 			title: 'note title 2',
 			content: 'note content man bruh idk',
 			pinned: true
-		},
-		{
-			id: 2,
-			title: 'note title 3',
-			content: 'note content man bruh idk',
-			pinned: false
-		},
-		{
-			id: 3,
-			title: 'note title 4',
-			content: 'note content man bruh idk',
-			pinned: false
-		},
+		}
 	])
 
 	const pinNote=(id)=>{
@@ -63,10 +52,27 @@ function App() {
 		setNoteList([...newNoteList])
 	}
 
+	const addNote=(title, content)=>{
+		const newNoteList = noteList
+		
+		const newNote = {
+			id: newNoteList.length,
+			title,
+			content,
+			pinned: false
+		}
+
+		newNoteList.push(newNote)
+
+		setNoteList([...newNoteList])
+		console.log(noteList)
+	}
+
 	return (
 		<div className="App">
-			<AddNote />
-			<Main noteList={noteList} pinNote={pinNote} deleteNote={deleteNote} editNote={editNote}/>
+			<Header />
+			<AddNote addNote={addNote} />
+			<Main noteList={noteList} pinNote={pinNote} deleteNote={deleteNote} editNote={editNote} />
 		</div>
 	);
 }
