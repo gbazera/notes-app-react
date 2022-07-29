@@ -8,7 +8,7 @@ function Main(props) {
 				<div className="notes">
 					{props.noteList.map((note) =>
 						note != null && note.pinned ? (
-							<div className="note" key={note.id}>
+							<div className="note" key={note.id} onClick={()=> props.openViewNote(note)}>
 								<div className="top">
 									<p className="title">{note.title}</p>
 									<button
@@ -39,7 +39,7 @@ function Main(props) {
 				<div className="notes">
 					{props.noteList.map((note) =>
 						note != null && !note.pinned ? (
-							<div className="note" key={note.id}>
+							<div className="note" key={note.id} onClick={()=> props.openViewNote(note)}>
 								<div className="top">
 									<p className="title">{note.title}</p>
 									<button

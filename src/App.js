@@ -1,3 +1,4 @@
+import moment from 'moment';
 import { useState } from 'react';
 import Header from './components/Header';
 import Main from './components/Main'
@@ -10,12 +11,14 @@ function App() {
 			id: 0,
 			title: 'note title 1',
 			content: 'note content man bruh idk',
+			date: '27.07.2022',
 			pinned: false
 		},
 		{
 			id: 1,
 			title: 'note title 2',
 			content: 'note content man bruh idk',
+			date: '25.07.2022',
 			pinned: true
 		}
 	])
@@ -57,6 +60,7 @@ function App() {
 			id: newNoteList.length,
 			title,
 			content,
+			date: moment().format('DD.MM.YYYY'),
 			pinned: false
 		}
 
@@ -66,12 +70,27 @@ function App() {
 		console.log(noteList)
 	}
 
+	const [viewOpen, setViewOpen] = useState(false)
+	const [openNote, setOpenNote] = useState()
+
+	const openViewNote=(note)=>{
+		console.log(openNote)
+		setViewOpen(true)
+		setOpenNote(note)
+	}
+
+	const closeViewNote=()=>{
+		console.log(openNote)
+		setViewOpen(false)
+		setOpenNote()
+	}
+
 	return (
 		<div className="App">
 			<Header />
 			<AddNote addNote={addNote} />
-			<Main noteList={noteList} pinNote={pinNote} deleteNote={deleteNote} />
-			<ViewNote editNote={editNote} />
+			<Main noteList={noteList} pinNote={pinNote} deleteNote={deleteNote} openViewNote={openViewNote}/>
+			<ViewNote editNote={editNote} closeViewNote={closeViewNote} viewOpen={viewOpen} openNote={openNote}/>
 		</div>
 	);
 }
