@@ -8,17 +8,18 @@ function Main(props) {
 				<div className="notes">
 					{props.noteList.map((note) =>
 						note != null && note.pinned ? (
-							<div className="note" key={note.id} onClick={()=> props.openViewNote(note)}>
+							<div className="note" key={note.id}>
 								<div className="top">
-									<p className="title">{note.title}</p>
+									<p className="title" onClick={()=> props.openViewNote(note)}>{note.title.slice(0, 20)}</p>
 									<button
 										onClick={() => props.pinNote(note.id)}
 									>
 										<i className="bx bxs-pin"></i>
 									</button>
 								</div>
-								<p className="content">{note.content}</p>
+								<p className="content" onClick={()=> props.openViewNote(note)}>{note.content.slice(0, 100)}</p>
 								<div className="bot">
+									<p className="date">{note.date}</p>
 									<button
 										onClick={() =>
 											props.deleteNote(note.id)
@@ -39,17 +40,18 @@ function Main(props) {
 				<div className="notes">
 					{props.noteList.map((note) =>
 						note != null && !note.pinned ? (
-							<div className="note" key={note.id} onClick={()=> props.openViewNote(note)}>
+							<div className="note" key={note.id}>
 								<div className="top">
-									<p className="title">{note.title}</p>
+									<p onClick={()=> props.openViewNote(note)} className="title">{note.title.slice(0, 20)}</p>
 									<button
 										onClick={() => props.pinNote(note.id)}
 									>
 										<i className="bx bx-pin"></i>
 									</button>
 								</div>
-								<p className="content">{note.content}</p>
+								<p onClick={()=> props.openViewNote(note)} className="content">{note.content.slice(0, 100)}</p>
 								<div className="bot">
+									<p className="date">{note.date}</p>
 									<button
 										onClick={() =>
 											props.deleteNote(note.id)

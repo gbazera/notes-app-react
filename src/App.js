@@ -1,5 +1,5 @@
 import moment from 'moment';
-import { useState } from 'react';
+import { useEffect, useState } from 'react';
 import Header from './components/Header';
 import Main from './components/Main'
 import AddNote from './components/AddNote';
@@ -9,17 +9,10 @@ function App() {
 	const [noteList, setNoteList] = useState([
 		{
 			id: 0,
-			title: 'note title 1',
-			content: 'note content man bruh idk',
-			date: '27.07.2022',
+			title: 'Sample note',
+			content: 'This is a sample note :)',
+			date: '29.07.2022',
 			pinned: false
-		},
-		{
-			id: 1,
-			title: 'note title 2',
-			content: 'note content man bruh idk',
-			date: '25.07.2022',
-			pinned: true
 		}
 	])
 
@@ -31,6 +24,7 @@ function App() {
 			}
 		});
 		setNoteList([...newNoteList])
+		saveData()
 	}
 
 	const deleteNote=(id)=>{
@@ -41,16 +35,29 @@ function App() {
 			}
 		});
 		setNoteList([...newNoteList])
+		saveData()
 	}
 
-	const editNote=(id, title, content)=>{
+	const updateTitle=(id, title)=>{
 		const newNoteList = noteList
 		newNoteList.forEach(note => {
 			if(note != null && note.id === id){
-				//code goes here
+				note.title = title
 			}
 		});
 		setNoteList([...newNoteList])
+		saveData()
+	}
+
+	const updateContent=(id, content)=>{
+		const newNoteList = noteList
+		newNoteList.forEach(note => {
+			if(note != null && note.id === id){
+				note.content = content
+			}
+		});
+		setNoteList([...newNoteList])
+		saveData()
 	}
 
 	const addNote=(title, content)=>{
@@ -67,30 +74,41 @@ function App() {
 		newNoteList.push(newNote)
 
 		setNoteList([...newNoteList])
-		console.log(noteList)
+		saveData()
 	}
 
 	const [viewOpen, setViewOpen] = useState(false)
 	const [openNote, setOpenNote] = useState()
 
 	const openViewNote=(note)=>{
-		console.log(openNote)
 		setViewOpen(true)
 		setOpenNote(note)
 	}
 
 	const closeViewNote=()=>{
-		console.log(openNote)
 		setViewOpen(false)
 		setOpenNote()
 	}
+
+	const saveData=()=>{
+		localStorage.setItem('noteList', JSON.stringify(noteList))
+	}
+
+	const loadData=()=>{
+		const newNoteList = localStorage.getItem('noteList')
+		if(newNoteList !== null) setNoteList(JSON.parse(newNoteList))
+	}
+
+	useEffect(()=>{
+		loadData()
+	}, [])
 
 	return (
 		<div className="App">
 			<Header />
 			<AddNote addNote={addNote} />
 			<Main noteList={noteList} pinNote={pinNote} deleteNote={deleteNote} openViewNote={openViewNote}/>
-			<ViewNote editNote={editNote} closeViewNote={closeViewNote} viewOpen={viewOpen} openNote={openNote}/>
+			<ViewNote updateTitle={updateTitle} updateContent={updateContent} closeViewNote={closeViewNote} viewOpen={viewOpen} openNote={openNote}/>
 		</div>
 	);
 }
