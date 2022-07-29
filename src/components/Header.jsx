@@ -2,7 +2,7 @@ function Header(){
     return(
         <nav>
             <div>
-                <a href="#" className="logo">NOTEPAD <span>XD</span></a>
+                <a href="/" className="logo">NOTEPAD <span>XD</span></a>
             </div>
         </nav>
     )
