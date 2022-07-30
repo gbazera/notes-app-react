@@ -7,15 +7,22 @@
 	font-family: 'Poppins', sans-serif;
 }
 
-$primary: #5469fb;
-$secondary: #e754fb;	
-$dark1: #282c3e;
-$dark2: #3c415d;
-$light: #fff;
+$primary: #6D8CFC;
+$secondary: #EE86FC;
+$text1: #282c3e;
+$text2: #3c415d;
+$bg1: #fff;
+$bg2: #eee;
 
 body {
-	// background-image: linear-gradient(45deg, $secondary, $primary);
-	background-color: $primary;
+	background-image: linear-gradient(45deg, $secondary, $primary);
+	background-attachment: fixed;
+}
+
+.dark{
+	$text1: #fff;
+	$text2: rgba($text1, .8);
+	$bg1: #282c3e;
 }
 
 .btn{
@@ -23,7 +30,7 @@ body {
     padding: 14px;
     border: none;
     border-radius: 10px;
-    color: $dark1;
+    color: $text1;
     font-size: 14px;
     font-weight: bold;
     cursor: pointer;
@@ -45,13 +52,13 @@ body {
 	width: 1000px;
 	margin: 0 auto;
 	padding: 20px;
-	background-color: rgba($light, 0.7);
+	background-color: rgba($bg1, 0.7);
 	margin-top: 20px;
 	border-radius: 10px;
 }
 
 nav{
-	background-color: rgba($light, 0.7);
+	background-color: rgba($bg1, 0.7);
 	height: 100px;
 	display: flex;
 	align-items: center;
@@ -59,11 +66,14 @@ nav{
 	div{
 		width: 1000px;
 		margin: 0 auto;
+		display: flex;
+		justify-content: space-between;
+		align-items: center;
 	}
 
 	.logo{
 		text-decoration: none;
-		color: $dark1;
+		color: $text1;
 		font-weight: bold;
 		font-size: 20px;
 
@@ -85,12 +95,12 @@ nav{
 	}
 
 	input, textarea{
-		background-color: rgba($primary, .1);
+		background-color: rgba($text1, .05);
 		border: none;
 		padding: 20px;
 		border-radius: 10px;
 		font-size: 14px;
-		color: $dark1;
+		color: $text1;
 		outline: 4px transparent solid;
 		transition: outline-color .3s;
 	}
@@ -101,7 +111,7 @@ nav{
 	}
 
 	input:focus, textarea:focus{
-		outline-color: rgba($primary, .5);
+		outline-color: rgba($text1, .05);
 	}
 }
 
@@ -122,8 +132,8 @@ nav{
 	padding: 20px;
 	width: 232px;
 	height: 200px;
-	background-color: rgba($light, 0.4);
-	box-shadow: 0 4px 8px rgba($dark1, 0.1);
+	background-color: rgba($bg1, 0.4);
+	box-shadow: 0 4px 8px rgba(#000, 0.1);
 	border-radius: 10px;
     display: flex;
     flex-direction: column;
@@ -132,18 +142,19 @@ nav{
 
 	.title {
 		font-size: 16px;
-		color: $dark1;
+		color: $text1;
 		cursor: pointer;
 	}
 
 	.content {
 		font-size: 12px;
-		color: $dark2;
+		color: $text2;
 		cursor: pointer;
+		word-wrap: break-word;
 	}
 
 	.date{
-		color: $dark2;
+		color: $text2;
 		font-size: 12px;
 	}
 
@@ -154,28 +165,23 @@ nav{
 		align-items: center;
 	}
 
-	button {
-		background-color: transparent;
-		border: none;
-		cursor: pointer;
+	button{
 		font-size: 18px;
-        color: $dark1;
-		width: 32px;
-		height: 32px;
-		border-radius: 5px;
 	}
+}
 
-    button:hover{
-        background-color: rgba($dark1, .1);
-    }
+.note.dark{
+	background-color: rgba($text1, 0.4);
+	.title{color: $bg1;}
+	.content{color: $bg2;}
 }
 
 .note:hover {
-	background-color: rgba($light, 0.6);
+	background-color: rgba($bg1, 0.6);
 }
 
 .heading {
-	color: $dark1;
+	color: $text1;
 	font-weight: bold;
 	font-size: 16px;
 }
@@ -191,7 +197,7 @@ nav{
 
 .popup{
 	position: absolute;
-	background-color: $light;
+	background-color: $bg1;
 	left: 50%;
 	top: 50%;
 	transform: translate(-50%, -50%);
@@ -208,23 +214,12 @@ nav{
 	}
 
 	.date{
-		color: $dark2;
+		color: $text2;
 		font-size: 14px;
 	}
 
 	button{
-		font-size: 24px;
-		border: none;
-		background-color: transparent;
-		cursor: pointer;
-		color: $dark2;
-		width: 32px;
-		height: 32px;
-		border-radius: 5px;
-	}
-
-	button:hover{
-		background-color: rgba($dark1, .1);
+		font-size: 24px !important;
 	}
 
 	input{
@@ -233,17 +228,39 @@ nav{
 		outline: none;
 		font-size: 24px;
 		margin-top: 20px;
-		color: $dark1;
+		color: $text1;
 	}
 
 	textarea{
-		background-color: rgba($primary, .1);
+		background-color: rgba($text1, .05);
 		border: none;
 		outline: none;
 		font-size: 16px;
 		padding: 20px;
 		margin-top: 20px;
 		border-radius: 20px;
-		color: $dark2;
+		color: $text2;
 	}
+}
+
+.btn-ico{
+	font-size: 20px;
+	border: none;
+	background-color: transparent;
+	cursor: pointer;
+	color: $text2;
+	width: 32px;
+	height: 32px;
+	border-radius: 5px;
+}
+
+.btn-ico:hover{
+	background-color: rgba($text1, .1);
+}
+
+@media screen and (max-width: 1000px){
+	.container{
+		width: 100%;
+		border-radius: 0;
+	}	
 }
