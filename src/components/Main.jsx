@@ -1,3 +1,5 @@
+import Note from './Note';
+
 function Main(props) {
 	return (
 		<main>
@@ -8,27 +10,17 @@ function Main(props) {
 				<div className="notes">
 					{props.noteList.map((note) =>
 						note != null && note.pinned ? (
-							<div className="note" key={note.id}>
-								<div className="top">
-									<p className="title" onClick={()=> props.openViewNote(note)}>{note.title.slice(0, 15)}...</p>
-									<button className="btn-ico"
-										onClick={() => props.pinNote(note.id)}
-									>
-										<i className="bx bxs-pin"></i>
-									</button>
-								</div>
-								<p className="content" onClick={()=> props.openViewNote(note)}>{note.content.slice(0, 50)}...</p>
-								<div className="bot">
-									<p className="date">{note.date}</p>
-									<button className="btn-ico"
-										onClick={() =>
-											props.deleteNote(note.id)
-										}
-									>
-										<i className="bx bx-trash"></i>
-									</button>
-								</div>
-							</div>
+							<Note
+								key={note.id}
+								note={note}
+								id={note.id}
+								title={note.title}
+								content={note.content}
+								pinNote={props.pinNote}
+								deleteNote={props.deleteNote}
+								openViewNote={props.openViewNote}
+								pinClass={'bxs-pin'}
+							/>
 						) : null
 					)}
 				</div>
@@ -40,27 +32,17 @@ function Main(props) {
 				<div className="notes">
 					{props.noteList.map((note) =>
 						note != null && !note.pinned ? (
-							<div className="note" key={note.id}>
-								<div className="top">
-									<p onClick={()=> props.openViewNote(note)} className="title">{note.title.slice(0, 15)}...</p>
-									<button className="btn-ico"
-										onClick={() => props.pinNote(note.id)}
-									>
-										<i className="bx bx-pin"></i>
-									</button>
-								</div>
-								<p onClick={()=> props.openViewNote(note)} className="content">{note.content.slice(0, 50)}...</p>
-								<div className="bot">
-									<p className="date">{note.date}</p>
-									<button className="btn-ico"
-										onClick={() =>
-											props.deleteNote(note.id)
-										}
-									>
-										<i className="bx bx-trash"></i>
-									</button>
-								</div>
-							</div>
+							<Note
+								key={note.id}
+								note={note}
+								id={note.id}
+								title={note.title}
+								content={note.content}
+								pinNote={props.pinNote}
+								deleteNote={props.deleteNote}
+								openViewNote={props.openViewNote}
+								pinClass={'bx-pin'}
+							/>
 						) : null
 					)}
 				</div>
